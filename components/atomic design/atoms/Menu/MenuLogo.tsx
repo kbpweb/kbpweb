@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react'
 
 
 export const MenuLogo = () => {
-
     return(
         <>
             <div className={styles.menuLogoContainer}>

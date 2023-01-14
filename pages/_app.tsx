@@ -1,9 +1,15 @@
 import '../styles/globals.css'
-import type { AppProps } from 'next/app'
-import { Menu } from '../components/Menu/Menu'
+import { Menu } from '../components/atomic design/organisms/Menu/Menu'
+import WelcomePage from '../components/layouts/WelcomePage/WelcomePage'
+import CookieContainer from '../components/atomic design/organisms/Cookies/CookieContainer'
 
 export default function App() {
   return(
-    <Menu />
+    <>
+      <Menu />
+      <WelcomePage />
+
+      <CookieContainer />
+    </>
   )
 }

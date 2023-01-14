@@ -6,8 +6,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: EuclidLight;
+
 }
 
 a {
@@ -27,4 +27,27 @@ a {
     color: #000;
     background: white
   }
+}
+
+@font-face {
+  font-family: EuclidLight;
+  src: url('./fonts/euclid\ circular\ A/Euclid Circular A Light.ttf');
+  format: 'ttf'
+}
+@font-face {
+  font-family: EuclidRegular;
+  src: url('./fonts/euclid\ circular\ A/Euclid Circular A Regular.ttf');
+  format: 'ttf'
+}
+
+@font-face {
+  font-family: EuclidMedium;
+  src: url('./fonts/euclid\ circular\ A/Euclid Circular A Medium.ttf');
+  format: 'ttf'
+}
+
+@font-face {
+  font-family: EuclidBold;
+  src: url('./fonts/euclid\ circular\ A/Euclid Circular A Bold.ttf');
+  format: 'ttf'
 }

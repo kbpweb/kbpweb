@@ -1,0 +1,1 @@
+export const description = 'Na tej stronie używamy plików cookies i podobnych funkcji do przetwarzania informacji o urządzeniach końcowych i danych osobowych.'
