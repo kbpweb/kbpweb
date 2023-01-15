@@ -3,18 +3,20 @@ import Circle from '../../atoms/WelcomeBackground/Circle'
 import {description} from '../../../../content/Cookies/cookies_desc'
 import styles from './CookiesButton.module.sass'
 import Cookies from 'universal-cookie'
+import { useDispatch } from 'react-redux'
+import { cookie_state } from '../../../../redux/reducer/reducers'
+
 
 const cookie = new Cookies()
 
 export default function CookiesButton() {
-    let isCookieSet = cookie.get('USER_AGREED_COOKIES')
-    const handleValidateCookies = () => {
-      cookie.set('USER_AGREED_COOKIES', 'TRUE')
+  const dispatch = useDispatch()
+  const validateCookies = () => {
+    dispatch(cookie_state(true))
   }
   return(
     <>
-        <p style={{color: 'white'}}>zaakceptowano? {isCookieSet}</p>
-        <button className={`${styles.button}`} onClick={() => handleValidateCookies()}><span>Akceptuję</span></button>
+        <button className={`${styles.button}`} onClick={() => validateCookies()}><span>Akceptuję</span></button>
     </>
   )
 }
