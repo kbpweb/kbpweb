@@ -10,25 +10,43 @@ import { useSelector } from 'react-redux'
 // import { cookieAccept, cookie_state } from '../../../../redux/reducer/reducers'
 import {useCookieState} from '../../../../redux/selectors/cookies'
 import Cookies from 'universal-cookie'
+import anime from 'animejs';
 
 const cookie = new Cookies()
+const cookieContainer = React.createRef<HTMLDivElement>()
 
 export default function CookieContainer(){
   const cookieState = useCookieState()
-  console.log('aa ' + cookie.get('USER_AGREED_COOKIES'))
+  const [cookiesHidden, setCookiesHidden] = useState(false)
+  const [checked, setCheckedStatus] = useState(false)
   useEffect(() => {
-    if(cookieState){
-      setTimeout(() => {
-        cookie.set('USER_AGREED_COOKIES', true)
-      }, 200)
+    if(cookie.get('USER_ACCEPTED_COOKIES') === 'true'){
+      setCookiesHidden(true)
     }
   })
+  useEffect(() => {
+    if(cookieState){
+      const tl = anime.timeline({
+        targets: cookieContainer.current,
+      })
+  
+      tl.add({
+        transformX: '200px',
+        opacity: [1, 0]
+      })
+      cookie.set('USER_ACCEPTED_COOKIES', 'true')
+    }
 
-  if(cookie.get('USER_AGREED_COOKIES') !== 'true' || true){
+    setCheckedStatus(true)
+
+    console.log(`L: ${cookiesHidden} T: ${typeof cookiesHidden} | R: ${cookie.get('USER_ACCEPTED_COOKIES')} T: ${typeof cookie.get('USER_ACCEPTED_COOKIES')}`)
+  })
+
     return(
-      <div className={`${styles.cookiesContainer}`} style={cookieState ? {opacity: 0, transition: '.2s all ease-in-out'} : {}}>
+      <div>
+        {checked && <div ref={cookieContainer} className={`${styles.cookiesContainer}`} style={cookiesHidden ? {display: 'none'} : {display: 'block'}}>
           <CookiesWrapped />
+        </div>}
       </div>
     )
-  }
 }
