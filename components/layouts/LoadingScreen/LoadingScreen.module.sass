@@ -7,11 +7,21 @@
     left: 0
     top: 0
     z-index: 10000
+    .spinnerWrapper
+        width: 100%
+        position: absolute
+        bottom: 100px
+        left: 0
+        z-index: 200000
+        svg
+            width: 100%
+            path    
+                width: 100%
     .loadingScreenCircle
         width: 5000px
         height: 5000px
         border-radius: 50%
-        background: #222
+        background: #fff
         position: absolute
         overflow: hidden
     .loadingScreenContainer
@@ -22,21 +32,28 @@
         .loadingMainText
             width: 100%
             height: 100%
-            display: grid
-            place-items: center
             position: absolute
             top: 0%
             left: 0%
             overflow: hidden
-            img
-                filter: invert(1)
+            display: grid
+            place-items: center
+            .loadingMainImage
+                padding: 30px
+                height: 150px
+                display: flex
+                align-items: center
+                img
+                    height: 100px
+                    width: auto
         .loadingBottom
             width: 100%
             z-index: 1000
-            span
-                font-size: 1.5rem
-                color: #fff
-                font-family: EuclidBold
-            .loadingScreenLine
-                height: 5px
-                background: white
+            display: flex
+            justify-content: space-between
+            p
+                padding: 0px 30px
+                font-size: 2rem
+                color: #000
+                font-family: EuclidLight
+            &:nth-child(2)

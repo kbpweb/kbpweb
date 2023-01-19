@@ -5,6 +5,7 @@ import CookieContainer from '../components/atomic design/organisms/Cookies/Cooki
 import { Provider } from 'react-redux';
 import {wrapper} from '../redux/store/store'
 import LoadingScreen from '../components/layouts/LoadingScreen/LoadingScreen';
+import PriceInfoPage from '../components/layouts/PriceInfoPage/PriceInfoPage';
 
 export default function App({...rest}) {
   const {store, props} = wrapper.useWrappedStore(rest)
@@ -13,6 +14,7 @@ export default function App({...rest}) {
       <Provider store={store}>
         <Menu />
         <WelcomePage />
+        <PriceInfoPage />
 
         <LoadingScreen/>
         <CookieContainer />

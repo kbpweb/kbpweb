@@ -1,6 +1,7 @@
 import React, {useEffect, useState } from "react"
 import styles from './LoadingScreen.module.sass'
 import anime from 'animejs'
+import {InfinitySpin} from 'react-loader-spinner'
 
 export default function LoadingScreen() {
   let [count, setCounter] = useState(0)
@@ -18,7 +19,7 @@ export default function LoadingScreen() {
        } else{
          setLoadStatus(true)
        }
-      }, 20)
+      }, 10)
       return () => {
         clearTimeout(to)
       }
@@ -36,7 +37,8 @@ export default function LoadingScreen() {
     if(loaded){
       const layout = anime.timeline({
         targets: loadingScreenLayoutRef.current,
-        duration: 1000
+        easing: 'easeInOutSine',
+        duration: 1000,
       })
 
       layout.add({
@@ -45,13 +47,13 @@ export default function LoadingScreen() {
       })
       const tl = anime.timeline({
         targets: loadingScreenRef.current,
+        easing: 'easeInOutSine',
         duration: 1000,
-        easing: 'linear',
-        delay: 300
+        delay: 1000
       })
   
       tl.add({
-        scale: 0
+        opacity: [1, 0]
       })
     }
     setTimeout(() => {
@@ -65,11 +67,13 @@ export default function LoadingScreen() {
         <div className={`${styles.loadingScreenCircle}`} ref={loadingScreenRef}></div>
           <div className={`${styles.loadingScreenContainer}`} ref={loadingScreenLayoutRef}>
               <div className={`${styles.loadingMainText}`}>
-                  <img src={'/logo.png'}></img>
+                <div className={`${styles.loadingMainImage}`}>
+                  <img src={'/kbploading.png'}></img>
+                </div>
               </div>
               <div className={`${styles.loadingBottom}`}>
-                <span>{count}</span>
-                <div className={`${styles.loadingScreenLine}`} ref={loadingLineRef}></div>
+                <p></p>
+                <InfinitySpin width='200' color='#000'/>
               </div>
           </div>
       </div>

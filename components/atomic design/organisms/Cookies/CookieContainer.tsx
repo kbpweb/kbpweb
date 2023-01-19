@@ -28,13 +28,14 @@ export default function CookieContainer(){
     if(cookieState){
       const tl = anime.timeline({
         targets: cookieContainer.current,
+        easing: 'easeInOutSine',
+        duration: 200
       })
   
       tl.add({
-        transformX: '200px',
-        opacity: [1, 0]
+        opacity: 0
       })
-      cookie.set('USER_ACCEPTED_COOKIES', 'true')
+      // cookie.set('USER_ACCEPTED_COOKIES', 'true')
     }
 
     setCheckedStatus(true)
@@ -44,7 +45,7 @@ export default function CookieContainer(){
 
     return(
       <div>
-        {checked && <div ref={cookieContainer} className={`${styles.cookiesContainer}`} style={cookiesHidden ? {display: 'none'} : {display: 'block'}}>
+        {<div ref={cookieContainer} className={`${styles.cookiesContainer}`} style={cookiesHidden ? {display: 'none'} : {display: 'block'}}>
           <CookiesWrapped />
         </div>}
       </div>
