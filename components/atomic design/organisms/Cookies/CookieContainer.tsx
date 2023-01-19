@@ -35,7 +35,7 @@ export default function CookieContainer(){
       tl.add({
         opacity: 0
       })
-      // cookie.set('USER_ACCEPTED_COOKIES', 'true')
+      cookie.set('USER_ACCEPTED_COOKIES', 'true')
     }
 
     setCheckedStatus(true)
